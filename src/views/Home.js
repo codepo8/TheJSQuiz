@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
+import { Link } from 'react-router-dom';
 
 // Custom components
 import Header from '../components/Header';
@@ -20,7 +21,6 @@ export default class Home extends Component {
                     <div className="container">
                       <div className="android-card-container mdl-grid">
                           <Card
-                            replace={this.props.replace}
                             title="BEGINNER"
                             description="For JavaScript developers who are less experienced (< 6 months). Or who are not completely comfortable with the language."
                             difficulty="beginner" />

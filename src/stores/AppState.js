@@ -8,6 +8,8 @@ class AppState {
     @observable questions;
     @observable currentQuestionIndex;
     @observable difficulty;
+    @observable correntAnswerCount = 0;
+    @observable incorrentAnswerCount = 0;
 
     constructor() {
         this.currentQuestionIndex = 0;
@@ -31,6 +33,20 @@ class AppState {
             case 'advanced':
                 this.questions = easyQuestions;
                 break;
+        }
+    }
+
+    @action answerQuestion(answer) {
+        if (answer.hasOwnProperty('answer') && answer.answer === true) {
+            console.log('Correct answer');
+            this.correntAnswerCount += 1;
+            this.currentQuestionIndex += 1;
+            return true;
+        } else {
+            console.log('Incorrect answer');
+            this.incorrentAnswerCount += 1;
+
+            return false;
         }
     }
 }

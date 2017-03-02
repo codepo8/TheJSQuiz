@@ -12,11 +12,6 @@ export default class Card extends Component {
 
     setQuizDifficulty() {
         this.store.setQuizDifficulty(this.props.difficulty);
-
-        // Redirect if difficulty is set to selected item
-        if(this.store.difficulty === this.props.difficulty) {
-          this.props.replace("/quiz");
-        }
     }
 
     render() {
@@ -28,12 +23,14 @@ export default class Card extends Component {
                 <div className="mdl-card__supporting-text">
                     <span className="mdl-typography--font-light mdl-typography--subhead">{this.props.description}</span>
                 </div>
-                <div className="mdl-card__actions">
-                    <div className="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href data-upgraded=",MaterialButton">
-                        Start the quiz
-                        <i className="material-icons">chevron_right</i>
+                <Link to="/quiz">
+                    <div className="mdl-card__actions">
+                        <div className="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href data-upgraded=",MaterialButton">
+                            Start the quiz
+                            <i className="material-icons">chevron_right</i>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
         );
     }

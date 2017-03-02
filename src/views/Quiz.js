@@ -11,6 +11,7 @@ export default class Quiz extends Component {
     constructor(props) {
         super(props);
         this.store = this.props.store;
+        this.renderQuestions = this.renderQuestions.bind(this)
     }
 
     componentWillMount() {
@@ -21,7 +22,24 @@ export default class Quiz extends Component {
     }
 
     componentDidMount() {
-        console.log(this.store.questions);
+        //  console.log(this.store.questions);
+    }
+
+    renderQuestions() {
+        if (this.store.questions && this.store.questions.length > 0) {
+            let currentQuestion = this.store.questions[this.store.currentQuestionIndex];
+            if (currentQuestion) {
+                return (
+                    <div className="question">
+                      <h4>{currentQuestion.title}</h4> <br/>
+                        {currentQuestion.answers.map((answer, key) =>
+                          <li key={key}
+                              onClick={() => this.store.answerQuestion(answer)}>{answer.value}</li>
+                        )}
+                    </div>
+                )
+            }
+        }
     }
 
     render() {
@@ -30,20 +48,9 @@ export default class Quiz extends Component {
                 <div className="page-content">
                     <Header/>
                     <div className="container">
-                        <div className="android-card-container mdl-grid">
-                            <h1>difficulty: {this.store.difficulty}</h1>
-                            <Highlight language="js">
-                                var a = 5;
-                            </Highlight>
-
-                            {this.store.questions && this.store.questions.length > 0 && this.store.questions.map((question, index) => {
-                                return (
-                                    <div key={index}>
-                                        <h1>Question: {question.title}</h1>
-                                    </div>
-                                )
-                            })}
-                        </div>
+                        <h5>difficulty: {this.store.difficulty}</h5>
+                        <br/>
+                        <ul>{this.renderQuestions()}</ul>
                     </div>
                 </div>
             </main>
