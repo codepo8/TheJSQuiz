@@ -32,5 +32,23 @@
                 "answer": true
             }
         ]
+    },
+    {
+        "title": "Test?",
+        "snippet": "var a = 1 || 2;",
+        "answers": [{
+            "value": "Object"
+        },
+            {
+                "value": "Null"
+            },
+            {
+                "value": "Function"
+            },
+            {
+                "value": "False",
+                "answer": true
+            }
+        ]
     }
 ]

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {inject, observer} from 'mobx-react';
 
 // Custom components
@@ -11,18 +11,19 @@ export default class Leaderboard extends Component {
         this.store = this.props.store;
     }
 
+    componentWillMount() {
+        // If difficulty has not been set redirect to Home
+        if (this.store.difficulty === undefined || this.store.quizEnded === false) {
+            this.props.replace("/");
+        }
+    }
+
     render() {
         return (
             <section className="home">
                 <Header />
-                <h1>Leaderboard</h1>
-                <p>
-                    Correct: {this.store.correctAnswerCount}
-                </p>
+                <h1>Results</h1>
 
-                <p>
-                    Incorrect: {this.store.incorrectAnswerCount}
-                </p>
             </section>
         );
     }

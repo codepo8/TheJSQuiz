@@ -8,8 +8,9 @@ class AppState {
     @observable questions;
     @observable currentQuestionIndex;
     @observable difficulty;
-    @observable correntAnswerCount = 0;
-    @observable incorrentAnswerCount = 0;
+    @observable correctAnswerCount = 0;
+    @observable incorrectAnswerCount = 0;
+    @observable quizEnded = false;
 
     constructor() {
         this.currentQuestionIndex = 0;
@@ -38,16 +39,26 @@ class AppState {
 
     @action answerQuestion(answer) {
         if (answer.hasOwnProperty('answer') && answer.answer === true) {
-            console.log('Correct answer');
-            this.correntAnswerCount += 1;
-            this.currentQuestionIndex += 1;
+            this.correctAnswer();
             return true;
         } else {
-            console.log('Incorrect answer');
-            this.incorrentAnswerCount += 1;
-
+            this.incorrectAnswer();
             return false;
         }
+    }
+
+    correctAnswer() {
+        if((this.currentQuestionIndex) === this.questions.length - 1) {
+            console.log('True');
+            this.quizEnded = true;
+        } else {
+            this.correctAnswerCount += 1;
+            this.currentQuestionIndex += 1;
+        }
+    }
+
+    incorrectAnswer() {
+        this.incorrectAnswerCount += 1;
     }
 }
 

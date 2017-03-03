@@ -4,14 +4,14 @@ import Highlight from 'react-highlight.js';
 
 // Custom components
 import Header from '../components/Header';
-import Card from '../components/Card';
 
 @inject("store")@observer
 export default class Quiz extends Component {
     constructor(props) {
         super(props);
         this.store = this.props.store;
-        this.renderQuestions = this.renderQuestions.bind(this)
+        this.renderQuestions = this.renderQuestions.bind(this);
+        this.answerQuestion = this.answerQuestion.bind(this);
     }
 
     componentWillMount() {
@@ -19,10 +19,8 @@ export default class Quiz extends Component {
         if (this.store.difficulty === undefined) {
             this.props.replace("/");
         }
-    }
 
-    componentDidMount() {
-        //  console.log(this.store.questions);
+        this.redirectAfterQuizEnded();
     }
 
     renderQuestions() {
@@ -34,11 +32,22 @@ export default class Quiz extends Component {
                       <h4>{currentQuestion.title}</h4> <br/>
                         {currentQuestion.answers.map((answer, key) =>
                           <li key={key}
-                              onClick={() => this.store.answerQuestion(answer)}>{answer.value}</li>
+                              onClick={() => this.answerQuestion(answer)}>{answer.value}</li>
                         )}
                     </div>
                 )
             }
+        }
+    }
+
+    answerQuestion(answer) {
+        this.redirectAfterQuizEnded();
+        this.store.answerQuestion(answer);
+    }
+
+    redirectAfterQuizEnded() {
+        if(this.store.quizEnded === true) {
+            this.props.replace("/results");
         }
     }
 

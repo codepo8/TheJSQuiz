@@ -28,6 +28,11 @@ export default class App extends Component {
 						/>
 
 						<Route exact
+							   path="/results"
+							   render={(props) => <LazyRoute {...props} component={System.import('./views/Results')} />}
+						/>
+
+						<Route exact
 							   path="/leaderboard"
 							   render={(props) => <LazyRoute {...props} component={System.import('./views/Leaderboard')} />}
 						/>
