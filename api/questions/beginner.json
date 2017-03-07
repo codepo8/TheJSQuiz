@@ -1,0 +1,54 @@
+[{
+        "title": "Which of the following is NOT a datatype in JavaScript",
+        "answers": [{
+                "value": "Object"
+            },
+            {
+                "value": "Null"
+            },
+            {
+                "value": "Function"
+            },
+            {
+                "value": "False",
+                "answer": true
+            }
+        ]
+    },
+    {
+        "title": "What would be the value of a?",
+        "snippet": "var a = 1 || 2;",
+        "answers": [{
+                "value": "Object"
+            },
+            {
+                "value": "Null"
+            },
+            {
+                "value": "Function"
+            },
+            {
+                "value": "False",
+                "answer": true
+            }
+        ]
+    },
+    {
+        "title": "Test?",
+        "snippet": "var a = 1 || 2;",
+        "answers": [{
+            "value": "Object"
+        },
+            {
+                "value": "Null"
+            },
+            {
+                "value": "Function"
+            },
+            {
+                "value": "False",
+                "answer": true
+            }
+        ]
+    }
+]

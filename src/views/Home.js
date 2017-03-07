@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // Custom components
 import Header from '../components/Header';
-import Card from '../components/Card';
+import Card from '../components/DifficultyCard';
 
 export default class Home extends Component {
     constructor(props) {
@@ -26,13 +26,11 @@ export default class Home extends Component {
                             difficulty="beginner" />
 
                           <Card
-                            replace={this.props.replace}
                             title="INTERMEDIATE"
                             description="For seasoned JavaScript developers who are comfortable with the language and have been exposed to it for at least 6 months."
                             difficulty="intermediate" />
 
                           <Card
-                            replace={this.props.replace}
                             title="ADVANCED"
                             description="For the advanced JavaScript developer who know the language like the back of their hand (Warning - May hurt your feelings)."
                             difficulty="advanced" />

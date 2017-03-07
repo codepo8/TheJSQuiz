@@ -37,6 +37,11 @@ export default class App extends Component {
 							   render={(props) => <LazyRoute {...props} component={System.import('./views/Leaderboard')} />}
 						/>
 
+						<Route exact
+							   path="/resources"
+							   render={(props) => <LazyRoute {...props} component={System.import('./views/Resources')} />}
+						/>
+
 						{!!(timeToRefresh && timeToRefresh <= 4) && this.store.refreshToken()}
 					</div>
 				</Provider>

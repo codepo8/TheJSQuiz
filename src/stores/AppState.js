@@ -2,7 +2,7 @@ import {observable, action} from 'mobx'
 import axios from 'axios'
 
 // Quiz questions
-import easyQuestions from '../../api/easyQuestions.json';
+import easyQuestions from '../../api/questions/beginner.json';
 
 class AppState {
     @observable questions;

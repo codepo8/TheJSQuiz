@@ -14,7 +14,7 @@ export default() => {
                 <nav className="mdl-navigation mdl-layout--large-screen-only">
                     <Link to="/" className="mdl-navigation__link">HOME</Link>
                     <Link to="/leaderboard" className="mdl-navigation__link">LEADERBOARD</Link>
-                    <Link to="/" className="mdl-navigation__link">RESOURCES</Link>
+                    <Link to="/resources" className="mdl-navigation__link">RESOURCES</Link>
                 </nav>
             </div>
         </header>

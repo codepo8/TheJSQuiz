@@ -17,7 +17,7 @@ export default class Quiz extends Component {
     componentWillMount() {
         // If difficulty has not been set redirect to Home
         if (this.store.difficulty === undefined) {
-            this.props.replace("/");
+            this.props.history.push('/');
         }
 
         this.redirectAfterQuizEnded();
@@ -47,7 +47,7 @@ export default class Quiz extends Component {
 
     redirectAfterQuizEnded() {
         if(this.store.quizEnded === true) {
-            this.props.replace("/results");
+            this.props.history.push('/results');
         }
     }
 

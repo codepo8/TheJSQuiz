@@ -14,7 +14,7 @@ export default class Leaderboard extends Component {
     componentWillMount() {
         // If difficulty has not been set redirect to Home
         if (this.store.difficulty === undefined || this.store.quizEnded === false) {
-            this.props.replace("/");
+            this.props.history.push('/');
         }
     }
 
@@ -23,7 +23,13 @@ export default class Leaderboard extends Component {
             <section className="home">
                 <Header />
                 <h1>Results</h1>
+                <p>
+                    Correct: {this.store.correctAnswerCount}
+                </p>
 
+                <p>
+                    Incorrect: {this.store.incorrectAnswerCount}
+                </p>
             </section>
         );
     }
