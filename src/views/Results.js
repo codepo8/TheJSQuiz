@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 
 // Custom components
 import Header from '../components/Header';
 
-@inject("store") @observer
+@inject("store")@observer
 export default class Leaderboard extends Component {
     constructor(props) {
         super(props);
@@ -21,15 +21,17 @@ export default class Leaderboard extends Component {
     render() {
         return (
             <section className="home">
-                <Header />
-                <h1>Results</h1>
-                <p>
-                    Correct: {this.store.correctAnswerCount}
-                </p>
+              <Header/>
+                <div className="container">
+                    <h1>Results</h1>
+                    <p>
+                        Correct: {this.store.correctAnswerCount}
+                    </p>
 
-                <p>
-                    Incorrect: {this.store.incorrectAnswerCount}
-                </p>
+                    <p>
+                        Incorrect: {this.store.incorrectAnswerCount}
+                    </p>
+                </div>
             </section>
         );
     }

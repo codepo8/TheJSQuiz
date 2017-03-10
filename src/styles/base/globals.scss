@@ -16,8 +16,20 @@
 
 pre {
   width: 100%;
-  
+
   code {
       width: 100%;
   }
+}
+
+a {
+  text-decoration: none;
+}
+
+.animate, .animate-enter-active, .animate-appear, .animate-appear-active {
+      animation: slide-from-right 0.4s ease;
+}
+
+.animate-leave {
+  opacity: 0;
 }

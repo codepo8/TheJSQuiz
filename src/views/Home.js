@@ -18,7 +18,7 @@ export default class Home extends Component {
                 <div className="page-content">
                     <Header/>
 
-                    <div className="container">
+                    <div className="container animate">
                       <div className="android-card-container mdl-grid">
                           <Card
                             title="BEGINNER"

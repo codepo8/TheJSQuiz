@@ -16,7 +16,7 @@ export default class App extends Component {
 			<Router>
 				<Provider store={this.store}>
 					<div className="mdl-layout mdl-js-layout">
-						{/*<DevTools />*/}
+						
 						<Route exact
 							   path="/"
 							   render={(props) => <LazyRoute {...props} component={System.import('./views/Home')} />}

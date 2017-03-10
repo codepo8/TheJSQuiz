@@ -1,0 +1,19 @@
+.quiz-component {
+    ul {
+        li {
+            font-size: 24px;
+
+            .answer {
+                font-size: 26px;
+                width: 100%;
+                margin-left: 20px;
+            }
+
+            &:hover {
+                .answer {
+                    background: $lightGray;
+                }
+            }
+        }
+    }
+}

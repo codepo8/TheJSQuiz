@@ -14,6 +14,7 @@ class AppState {
 
     constructor() {
         this.currentQuestionIndex = 0;
+        this.questions = [];
     }
 
     @action setQuizDifficulty(difficulty) {
@@ -40,17 +41,15 @@ class AppState {
     @action answerQuestion(answer) {
         if (answer.hasOwnProperty('answer') && answer.answer === true) {
             this.correctAnswer();
-            return true;
         } else {
             this.incorrectAnswer();
-            return false;
         }
     }
 
     correctAnswer() {
-        if((this.currentQuestionIndex) === this.questions.length - 1) {
-            console.log('True');
+        if ((this.currentQuestionIndex) === this.questions.length - 1) {
             this.quizEnded = true;
+            this.correctAnswerCount += 1;
         } else {
             this.correctAnswerCount += 1;
             this.currentQuestionIndex += 1;

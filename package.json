@@ -1,5 +1,5 @@
 {
-  "name": "MartinsReactBoilerplate",
+  "name": "TheJSQuiz",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -9,15 +9,7 @@
     "preview": "http-server ./dist -p 1234 -c-1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "React",
-    "React-Router",
-    "MobX",
-    "Webpack",
-    "ES6",
-    "ES7"
-  ],
-  "author": "Martin Haagensli",
+  "author": "Jamie Livingstone",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^6.5.0",
@@ -41,7 +33,7 @@
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
-    "webpack": "beta",
+    "webpack": "^2.2.0-rc.0",
     "webpack-dev-server": "^2.1.0-beta.8"
   },
   "dependencies": {
@@ -55,10 +47,12 @@
     "moment": "^2.15.1",
     "package": "^1.0.1",
     "react": "^15.3.2",
+    "react-addons-css-transition-group": "^15.4.2",
     "react-dom": "^15.3.2",
     "react-highlight.js": "^1.0.5",
     "react-interactjs": "^0.1.2",
     "react-router-dom": "^4.0.0-beta.7",
+    "webpack": "^2.2.1",
     "webpack-dev-server": "beta",
     "whatwg-fetch": "^1.0.0"
   },
