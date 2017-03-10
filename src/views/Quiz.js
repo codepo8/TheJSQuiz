@@ -7,7 +7,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Header from '../components/Header';
 import MessageBox from '../components/MessageBox';
 
-@inject("store")@observer
+@inject("store") @observer
 export default class Quiz extends Component {
     constructor(props) {
         super(props);
@@ -76,7 +76,7 @@ export default class Quiz extends Component {
                     <div className="container">
                         <div className="row">
                             <h5 className="animate">Question {store.currentQuestionIndex + 1}
-                                / {store.questions.length}</h5>
+                                /{store.questions.length}</h5>
 
                             <h5 className="animate">Difficulty: {store.difficulty}</h5>
                         </div>

@@ -15,13 +15,15 @@ class AppState {
     @observable quizEnded = false;
 
     constructor() {
-        this.currentQuestionIndex = 0;
         this.questions = [];
     }
 
     @action setQuizDifficulty(difficulty) {
-        this.difficulty = difficulty;
-        this.setQuestions(); // Set questions to reflect updated difficulty
+        if (difficulty !== this.difficulty) {
+            this.currentQuestionIndex = 0;
+            this.difficulty = difficulty;
+            this.setQuestions(); // Set questions to reflect updated difficulty
+        }
     }
 
     @action setQuestions() {
@@ -57,9 +59,9 @@ class AppState {
             this.correctNotification = true;
 
             setTimeout(() => {
-              this.correctNotification = false;
-              this.correctAnswerCount += 1;
-              this.currentQuestionIndex += 1;
+                this.correctNotification = false;
+                this.correctAnswerCount += 1;
+                this.currentQuestionIndex += 1;
             }, 1500)
         }
     }
@@ -69,7 +71,7 @@ class AppState {
         this.incorrectNotification = true;
 
         setTimeout(() => {
-          this.incorrectNotification = false;
+            this.incorrectNotification = false;
         }, 1500)
     }
 }

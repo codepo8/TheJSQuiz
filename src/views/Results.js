@@ -3,6 +3,7 @@ import {inject, observer} from 'mobx-react';
 
 // Custom components
 import Header from '../components/Header';
+import Form from '../components/Form';
 
 @inject("store")@observer
 export default class Leaderboard extends Component {
@@ -24,13 +25,21 @@ export default class Leaderboard extends Component {
               <Header/>
                 <div className="container">
                     <h1>Results</h1>
+                    <h4>Well done for completing the {this.store.difficulty} JavaScript quiz! Your results are below.</h4>
                     <p>
-                        Correct: {this.store.correctAnswerCount}
+                        <strong>Correct Answers:</strong> {this.store.correctAnswerCount}
                     </p>
 
                     <p>
-                        Incorrect: {this.store.incorrectAnswerCount}
+                        <strong>Incorrect Answers:</strong> {this.store.incorrectAnswerCount}
                     </p>
+
+                    <h5>Your score is: {((this.store.questions.length * 4) - this.store.incorrectAnswerCount)} out of {this.store.questions.length * 4}!</h5>
+
+                    <br/>
+
+                    <h3>Share your results</h3>
+                    <Form />
                 </div>
             </section>
         );
