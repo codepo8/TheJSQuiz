@@ -45,6 +45,7 @@ class AppState {
             this.correctAnswer();
         } else {
             this.incorrectAnswer();
+            return false;
         }
     }
 

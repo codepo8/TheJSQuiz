@@ -29,8 +29,13 @@ export default class Quiz extends Component {
         this.redirectAfterQuizEnded();
     }
 
-    answerQuestion(answer) {
-        this.store.answerQuestion(answer);
+    answerQuestion(answer, e) {
+        var answer = this.store.answerQuestion(answer);
+
+        if (answer === false) {
+            e.currentTarget.style.backgroundColor = '#ccc';
+            e.currentTarget.style.pointerEvents = 'none';
+        }
     }
 
     redirectAfterQuizEnded() {
@@ -40,7 +45,6 @@ export default class Quiz extends Component {
     }
 
     renderQuestions() {
-
         if (this.store.questions && this.store.questions.length > 0) {
             let currentQuestion = this.store.questions[this.store.currentQuestionIndex];
             let questionPrefixes = ['a.', 'b.', 'c.', 'd.'];
@@ -51,9 +55,9 @@ export default class Quiz extends Component {
                         <h4>{currentQuestion.title}</h4>
                         {currentQuestion.snippet && <Highlight className='js noselect'>{currentQuestion.snippet}</Highlight>}
                         <ul className="mdl-list">
-                            {currentQuestion.answers.map((answer, key) => <li key={key} className="mdl-list__item" onClick={item => this.answerQuestion(answer)}>
+                            {currentQuestion.answers.map((answer, key) => <li key={key} className="mdl-list__item">
                                 {questionPrefixes[key]}
-                                <span className="answer">{answer.value}</span>
+                                <span className="answer" onClick={e => this.answerQuestion(answer, e)}>{answer.value}</span>
                             </li>)}
                         </ul>
                     </div>
@@ -85,8 +89,8 @@ export default class Quiz extends Component {
                     </div>
                 </div>
 
-                {store.correctNotification && <MessageBox title="Correct!" color="green" character="&#x2714;" />}
-                {store.incorrectNotification && <MessageBox title="Wrong Answer!" color="red" character="&#x2716;" />}
+                {store.correctNotification && <MessageBox title="Correct!" color="green" character="&#x2714;"/>}
+                {store.incorrectNotification && <MessageBox title="Wrong Answer!" color="red" character="&#x2716;"/>}
                 {this.store.quizEnded}
             </main>
         );

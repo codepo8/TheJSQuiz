@@ -6,7 +6,7 @@
 
       h5 {
         text-transform: capitalize;;
-        
+
         &:first-of-type {
           float: left;
         }
@@ -28,11 +28,10 @@
                 margin-left: 20px;
                 padding: 20px;
                 border: 1px solid #ccc;
-            }
+                cursor: pointer;
 
-            &:hover {
-                .answer {
-                    background: $lightGray;
+                &:hover {
+                  background: $lightGray;
                 }
             }
         }
