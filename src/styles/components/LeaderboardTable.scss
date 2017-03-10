@@ -1,0 +1,16 @@
+.leaderboard-table {
+  h1 {
+    text-transform: capitalize;
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: 50px;
+
+    td {
+      &:last-of-type {
+        text-transform: capitalize;
+      }
+    }
+  }
+}

@@ -5,6 +5,9 @@ import axios from 'axios'
 import easyQuestions from '../../api/questions/beginner.json';
 
 class AppState {
+    /*
+        Quiz Related Code
+    */
     @observable questions;
     @observable currentQuestionIndex;
     @observable difficulty;
@@ -16,6 +19,7 @@ class AppState {
 
     constructor() {
         this.questions = [];
+        this.apiUrl = `http://app.local/api/leaderboard.php`;
     }
 
     @action setQuizDifficulty(difficulty) {
@@ -73,6 +77,18 @@ class AppState {
         setTimeout(() => {
             this.incorrectNotification = false;
         }, 1500)
+    }
+
+
+    /*
+        Leaderboard Related Code
+    */
+
+    async getLeaderboard(difficulty) {
+        if(!difficulty) return;
+        console.log('updating difficulty to', difficulty);
+        let {data} = await axios.get(`${this.apiUrl}?difficulty=${difficulty}`);
+        return data;
     }
 }
 
