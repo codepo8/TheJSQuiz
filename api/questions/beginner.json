@@ -1,35 +1,36 @@
 [{
-        "title": "Which of the following is NOT a datatype in JavaScript",
+        "title": "What is the value of the variable a?",
+        "snippet": "let a = \"1\" + 2 + 10; \necho a;",
         "answers": [{
-                "value": "Object"
-            },
-            {
-                "value": "Null"
-            },
-            {
-                "value": "Function"
-            },
-            {
-                "value": "False",
+                "value": "1210",
                 "answer": true
+            },
+            {
+                "value": "23"
+            },
+            {
+                "value": "NaN"
+            },
+            {
+                "value": "False"
             }
         ]
     },
     {
-        "title": "What would be the value of a?",
-        "snippet": "var a = 1 || 2;",
+        "title": "What would be the output of the following code?",
+        "snippet": "var myName = 'Lucy'; \nvar myNameCopy = myName; \nmyName = null; \nconsole.log(myName, myNameCopy);",
         "answers": [{
-                "value": "Object"
+                "value": "\"Lucy\" null"
             },
             {
-                "value": "Null"
+                "value": "\"Lucy\" \"Lucy\""
             },
             {
-                "value": "Function"
-            },
-            {
-                "value": "False",
+                "value": "null \"Lucy\"",
                 "answer": true
+            },
+            {
+                "value": "null"
             }
         ]
     },
@@ -37,8 +38,8 @@
         "title": "Test?",
         "snippet": "var a = 1 || 2;",
         "answers": [{
-            "value": "Object"
-        },
+                "value": "Object"
+            },
             {
                 "value": "Null"
             },

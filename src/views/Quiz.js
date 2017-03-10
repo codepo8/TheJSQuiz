@@ -5,6 +5,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 // Custom components
 import Header from '../components/Header';
+import MessageBox from '../components/MessageBox';
 
 @inject("store")@observer
 export default class Quiz extends Component {
@@ -19,7 +20,9 @@ export default class Quiz extends Component {
         // If difficulty has not been set redirect to Home
         if (this.store.difficulty === undefined) {
             this.props.history.push('/');
-        }
+        };
+
+        this.redirectAfterQuizEnded();
     }
 
     componentDidUpdate() {
@@ -46,8 +49,9 @@ export default class Quiz extends Component {
                 return (
                     <div className="question" key={this.store.currentQuestionIndex}>
                         <h4>{currentQuestion.title}</h4>
+                        {currentQuestion.snippet && <Highlight className='js noselect'>{currentQuestion.snippet}</Highlight>}
                         <ul className="mdl-list">
-                            {currentQuestion.answers.map((answer, key) => <li key={key} className="mdl-list__item" onClick={() => this.answerQuestion(answer)}>
+                            {currentQuestion.answers.map((answer, key) => <li key={key} className="mdl-list__item" onClick={item => this.answerQuestion(answer)}>
                                 {questionPrefixes[key]}
                                 <span className="answer">{answer.value}</span>
                             </li>)}
@@ -59,23 +63,28 @@ export default class Quiz extends Component {
     }
 
     render() {
+        const store = this.store;
+
         return (
             <main className="mdl-layout__content quiz-component">
                 <div className="page-content">
                     <Header/>
                     <div className="container">
-                        <h5 className="animate">Question {this.store.currentQuestionIndex + 1}
-                            / {this.store.questions.length}</h5>
+                        <div className="row">
+                            <h5 className="animate">Question {store.currentQuestionIndex + 1} / {store.questions.length}</h5>
 
-                        <h5 className="animate">Difficulty: {this.store.difficulty}</h5>
-                        <br/>
+                            <h5 className="animate">Difficulty: {store.difficulty}</h5>
+                        </div>
+
                         <ul>
-                            <ReactCSSTransitionGroup transitionName="animate" transitionEnterTimeout={500} transitionLeaveTimeout={300}  transitionAppear={true} transitionAppearTimeout={500}>
+                            <ReactCSSTransitionGroup transitionName="animate" transitionEnterTimeout={500} transitionLeaveTimeout={300} transitionAppear={true} transitionAppearTimeout={500}>
                                 {this.renderQuestions()}
                             </ReactCSSTransitionGroup>
                         </ul>
                     </div>
                 </div>
+
+                {/* <MessageBox title="Correct!" message="Well done, onto the next one." color="green" /> */}
 
                 {this.store.quizEnded}
             </main>

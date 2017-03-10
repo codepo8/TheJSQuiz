@@ -26,7 +26,6 @@ class Connection
 
     }
 
-
     static function getConnection() {
         $connection = new PDO();
     }

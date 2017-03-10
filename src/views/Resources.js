@@ -16,7 +16,7 @@ export default class Leaderboard extends Component {
         return (
             <section className="mdl-layout__content">
                 <Header />
-                <div className="container">
+                <div className="container animate">
                     <h1>Resources</h1>
                     <p>
                         I am not affiliated with any of the products or resources below, this is a list of resources I

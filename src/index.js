@@ -5,6 +5,9 @@ import { AppContainer } from 'react-hot-loader'
 import App from './Router'
 import AppState from './stores/AppState'
 
+// For the cheaters
+console.log('You are only cheating yourself, try and figure the code out in your head.')
+
 const appState = new AppState();
 
 ReactDOM.render(

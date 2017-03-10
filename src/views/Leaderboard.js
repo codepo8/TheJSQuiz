@@ -15,6 +15,8 @@ export default class Leaderboard extends Component {
         return (
             <section className="leaderboard">
                 <Header />
+
+                <div className="container animate">
                 <h1>Advanced Leaderboard</h1>
 
                 <table className="mdl-data-table mdl-js-data-table">
@@ -49,6 +51,7 @@ export default class Leaderboard extends Component {
                     </tr>
                     </tbody>
                 </table>
+                </div>
             </section>
         );
     }

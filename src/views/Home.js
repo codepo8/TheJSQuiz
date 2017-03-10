@@ -19,6 +19,10 @@ export default class Home extends Component {
                     <Header/>
 
                     <div className="container animate">
+
+                      <h1>Welcome to The JS Quiz</h1>
+                      <p>We have quizes for developers of all levels! A fun way to test you knowledge of the language, frameworks tools and more! Select a difficulty below and let's get started.</p>
+
                       <div className="android-card-container mdl-grid">
                           <Card
                             title="BEGINNER"
