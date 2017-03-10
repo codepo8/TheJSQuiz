@@ -1,0 +1,21 @@
+.message-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+
+    .text {
+        padding: 22px 0;
+        font-size: 30px;
+    }
+
+    &.message-box-green {
+      background: #9ACD32;
+    }
+
+    &.message-box-red {
+      background: #FF0000;
+    }
+}

@@ -10,6 +10,8 @@ class AppState {
     @observable difficulty;
     @observable correctAnswerCount = 0;
     @observable incorrectAnswerCount = 0;
+    @observable incorrectNotification = false;
+    @observable correctNotification = false;
     @observable quizEnded = false;
 
     constructor() {
@@ -51,13 +53,23 @@ class AppState {
             this.quizEnded = true;
             this.correctAnswerCount += 1;
         } else {
-            this.correctAnswerCount += 1;
-            this.currentQuestionIndex += 1;
+            this.correctNotification = true;
+
+            setTimeout(() => {
+              this.correctNotification = false;
+              this.correctAnswerCount += 1;
+              this.currentQuestionIndex += 1;
+            }, 1500)
         }
     }
 
     incorrectAnswer() {
         this.incorrectAnswerCount += 1;
+        this.incorrectNotification = true;
+
+        setTimeout(() => {
+          this.incorrectNotification = false;
+        }, 1500)
     }
 }
 

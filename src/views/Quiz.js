@@ -71,7 +71,8 @@ export default class Quiz extends Component {
                     <Header/>
                     <div className="container">
                         <div className="row">
-                            <h5 className="animate">Question {store.currentQuestionIndex + 1} / {store.questions.length}</h5>
+                            <h5 className="animate">Question {store.currentQuestionIndex + 1}
+                                / {store.questions.length}</h5>
 
                             <h5 className="animate">Difficulty: {store.difficulty}</h5>
                         </div>
@@ -84,8 +85,8 @@ export default class Quiz extends Component {
                     </div>
                 </div>
 
-                {/* <MessageBox title="Correct!" message="Well done, onto the next one." color="green" /> */}
-
+                {store.correctNotification && <MessageBox title="Correct!" color="green" character="&#x2714;" />}
+                {store.incorrectNotification && <MessageBox title="Wrong Answer!" color="red" character="&#x2716;" />}
                 {this.store.quizEnded}
             </main>
         );
