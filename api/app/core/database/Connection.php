@@ -1,8 +1,12 @@
 <?php
 
+namespace Quiz\core\database;
+use PDO;
+use PDOException;
+
 class Connection
 {
-    public static function make($config)
+    public static function getConnection($pdo)
     {
         try {
             return new PDO(
@@ -12,7 +16,7 @@ class Connection
                 $config['options']
             );
         } catch (PDOException $e) {
-            die("Error connecting to database.");
+            throw new Error('Error connecting to database.');
         }
     }
 }
