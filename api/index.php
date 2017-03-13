@@ -1,13 +1,9 @@
 <?php
 
-use Quiz\Core;
+require "vendor/autoload.php";
+require "app/bootstrap.php";
 
-require 'vendor/autoload.php';
+use Quiz\core\{Request, Router};
 
-$config = require "config.php";
-
-$connection = new Quiz\core\database\Connection($config['database']);
-
-$routesFile = Quiz\core\Router::load('app/routes.php');
-//var_dump($routesFile)
-//    ->direct(Request::uri(), Request::method());
+Router::load('app/routes.php')
+    ->direct(Request::uri(), Request::method());

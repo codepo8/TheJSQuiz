@@ -1,9 +1,7 @@
 {
-  "name": "TheJSQuiz",
   "autoload": {
-    "psr-4": { "Quiz\\": "app/" }
-  },
-  "require": {
-    "php": ">=5.3.3"
+    "psr-4": {
+      "Quiz\\":"app/"
+    }
   }
 }

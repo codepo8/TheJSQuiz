@@ -2,6 +2,10 @@
 
 namespace Quiz\core;
 
+use Exception;
+
+use Quiz\Controllers\{RequestController};
+
 class Router
 {
     public $routes = [
@@ -9,10 +13,12 @@ class Router
         'POST' => []
     ];
 
-    public static function load($file)
+    public static function load($routes)
     {
-        $router = new static;
-        require $file;
+        $router = new static();
+
+        require $routes;
+
         return $router;
     }
 
@@ -33,7 +39,6 @@ class Router
                 ...explode('@', $this->routes[$requestType][$uri])
             );
         }
-
         throw new Exception('No route defined for this URI.');
     }
 
@@ -41,13 +46,11 @@ class Router
     {
         $controller = "Quiz\\Controllers\\{$controller}";
         $controller = new $controller;
-
         if (! method_exists($controller, $action)) {
             throw new Exception(
                 "{$controller} does not respond to the {$action} action."
             );
         }
-
         return $controller->$action();
     }
 }

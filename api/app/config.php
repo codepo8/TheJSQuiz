@@ -1,12 +1,13 @@
 <?php
 
 return [
+    'appPath' => '/TheJSQuiz/api/',
     'database' => [
-        'name'       => 'jsquiz',
-        'username'   => 'root',
-        'password'   => '',
+        'name' => 'jsquiz',
+        'username' => 'root',
+        'password' => '',
         'connection' => 'mysql:host=127.0.0.1',
-        'options'    => [
+        'options' => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]
     ]

@@ -1,12 +1,12 @@
 <?php
 
-namespace Quiz\core\database;
+namespace Quiz\core;
 use PDO;
 use PDOException;
 
 class Connection
 {
-    public static function getConnection($pdo)
+    public static function getConnection($config)
     {
         try {
             return new PDO(
