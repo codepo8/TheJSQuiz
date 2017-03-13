@@ -1,0 +1,151 @@
+[
+  {
+    "title": "What is the value of the variable a?",
+    "snippet": "var a = \"1\" + 2 + 10; \nconsole.log(a);",
+    "answers": [
+      {
+        "value": "1210",
+        "answer": true
+      },
+      {
+        "value": "23"
+      },
+      {
+        "value": "NaN"
+      },
+      {
+        "value": "False"
+      }
+    ]
+  },
+  {
+    "title": "What would be the output of the following code?",
+    "snippet": "var myName = 'Lucy'; \nvar myNameCopy = myName; \nmyName = null; \nconsole.log(myName, myNameCopy);",
+    "answers": [
+      {
+        "value": "\"Lucy\" null"
+      },
+      {
+        "value": "\"Lucy\" \"Lucy\""
+      },
+      {
+        "value": "null \"Lucy\"",
+        "answer": true
+      },
+      {
+        "value": "null"
+      }
+    ]
+  },
+  {
+    "title": "Which of the following scripts would redirect me to Google?",
+    "answers": [
+      {
+        "value": "window.redirect = 'http://google.com';"
+      },
+      {
+        "value": "window.navigate('http://google.com');"
+      },
+      {
+        "value": "window.location = 'http://google.com';",
+        "answer": true
+      },
+      {
+        "value": "document.redirect('http://google.com');"
+      }
+    ]
+  },
+  {
+    "title": "What is the difference between “==” and “===” operators?",
+    "answers": [
+      {
+        "value": "“===” should only be used to compare numbers."
+      },
+      {
+        "value": "While “===” checks only for equality, “==” checks for equality as well as the type."
+      },
+      {
+        "value": "There isn't any difference, they both do the same thing."
+      },
+      {
+        "value": "While “==” checks only for equality, \n“===” checks for equality as well as the type.",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "title": "What would the following code output to the console?",
+    "snippet": "var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; \nconsole.log(numbers[4]);",
+    "answers": [
+      {
+        "value": 4
+      },
+      {
+        "value": 5,
+        "answer": true
+      },
+      {
+        "value": 8
+      },
+      {
+        "value": 1
+      }
+    ]
+  },
+  {
+    "title": "Are Java and JavaScript the same?",
+    "answers": [
+      {
+        "value": "Yes. Java is an abbreviation for JavaScript."
+      },
+      {
+        "value": "Yes. The creator of Java created JavaScript."
+      },
+      {
+        "value": "No. Java and JavaScript are two different languages.",
+        "answer": true
+      },
+      {
+        "value": "Yes. JavaScript is an extension of Java."
+      }
+    ]
+  },
+  {
+    "title": "How would I add an additional name to the array below name \"Adam\"",
+    "snippet": "var names = [\"Tom\", \"Sarah\", \"Nicole\"];",
+    "answers": [
+      {
+        "value": "names.add(\"Adam\");"
+      },
+      {
+        "value": "names.name = \"Adam\";"
+      },
+      {
+        "value": "names.join(\"Adam\");"
+      },
+      {
+        "value": "names.push(\"Adam\");",
+        "answer": true
+      }
+    ]
+  },
+  {
+    "title": "What would the following code output to the console?",
+    "snippet": "sayHello(); \nfunction sayHello() {\n console.log(\"Hello\");\n}",
+    "answers": [
+      {
+        "value": "\"Hello\"",
+        "answer": true
+      },
+      {
+        "value": "Uncaught ReferenceError: sayHello is not defined"
+      },
+      {
+        "value": "undefined"
+      },
+      {
+        "value": "sayHello()"
+      }
+    ]
+  }
+]

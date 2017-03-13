@@ -2,13 +2,14 @@
 
 namespace Quiz\controllers;
 
-use Quiz\Models\{Questions};
+use Quiz\Models\{
+    Questions
+};
 
 class RequestController
 {
-    public function home()
+    public function leaderboard()
     {
-       $questions = new Questions();
-       echo $questions->load();
+
     }
 }

@@ -2,7 +2,7 @@ import {observable, action} from 'mobx'
 import axios from 'axios'
 
 // Quiz questions
-import easyQuestions from '../../old/questions/beginner.json';
+import beginnerQuestions from '../../api/questions/beginner.json';
 
 class AppState {
     /*
@@ -33,15 +33,15 @@ class AppState {
     @action setQuestions() {
         switch (this.difficulty) {
             case 'beginner':
-                this.questions = easyQuestions;
+                this.questions = beginnerQuestions;
                 break;
 
             case 'intermediate':
-                this.questions = easyQuestions;
+                this.questions = beginnerQuestions;
                 break;
 
             case 'advanced':
-                this.questions = easyQuestions;
+                this.questions = beginnerQuestions;
                 break;
         }
     }
