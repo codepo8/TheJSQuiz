@@ -1,12 +1,9 @@
-require('./styles/main.scss')
+require('./styles/main.scss');
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {AppContainer} from 'react-hot-loader'
 import App from './Router'
 import AppState from './stores/AppState'
-
-// For the cheaters
-console.log('You are only cheating yourself, try and figure the code out in your head.')
 
 const appState = new AppState();
 
@@ -23,8 +20,7 @@ if (module.hot) {
         ReactDOM.render(
             <AppContainer>
                 <NextApp store={appState}/>
-            </AppContainer>
-            ,
+            </AppContainer>,
             document.getElementById('root')
         );
     });

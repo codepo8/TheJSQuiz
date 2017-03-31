@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 import {Link} from 'react-router-dom';
 
-@inject("store")@observer
+@inject("store") @observer
 export default class Card extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +26,7 @@ export default class Card extends Component {
                 <Link to="/quiz">
                     <div className="mdl-card__actions">
                         <div className="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href data-upgraded=",MaterialButton">
-                            Start new quiz
+                            {this.props.difficulty === this.store.difficulty && "Resume Quiz" || "Start new quiz"}
                             <i className="material-icons">chevron_right</i>
                         </div>
                     </div>

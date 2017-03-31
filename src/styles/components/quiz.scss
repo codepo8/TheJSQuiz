@@ -1,39 +1,40 @@
 .quiz-component {
-    .row {
-      display: block;
-      overflow: hidden;
-      margin-bottom: 40px;
+  .row {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 40px;
 
-      h5 {
-        text-transform: capitalize;;
+    h5 {
+      text-transform: capitalize;;
 
-        &:first-of-type {
-          float: left;
-        }
+      &:first-of-type {
+        float: left;
+      }
 
-        &:last-of-type {
-          float: right;
+      &:last-of-type {
+        float: right;
+      }
+    }
+  }
+  ul {
+    li {
+      font-size: 24px;
+      padding-left: 0;
+      padding-right: 0;
+      letter-spacing: 0px;
+
+      .answer {
+        font-size: 26px;
+        width: 100%;
+        margin-left: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+
+        &:hover {
+          background: $lightGray;
         }
       }
     }
-    ul {
-        li {
-            font-size: 24px;
-            padding-left: 0;
-            padding-right: 0;
-
-            .answer {
-                font-size: 26px;
-                width: 100%;
-                margin-left: 20px;
-                padding: 20px;
-                border: 1px solid #ccc;
-                cursor: pointer;
-
-                &:hover {
-                  background: $lightGray;
-                }
-            }
-        }
-    }
+  }
 }

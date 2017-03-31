@@ -53,7 +53,9 @@ export default class Quiz extends Component {
                 return (
                     <div className="question" key={this.store.currentQuestionIndex}>
                         <h4>{currentQuestion.title}</h4>
+
                         {currentQuestion.snippet && <Highlight className='js noselect'>{currentQuestion.snippet}</Highlight>}
+
                         <ul className="mdl-list">
                             {currentQuestion.answers.map((question, key) => <li key={key} className="mdl-list__item">
                                 {questionPrefixes[key]}

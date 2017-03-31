@@ -1,11 +1,11 @@
 import {observable, action} from 'mobx'
 import axios from 'axios'
+import {limitArray, randomArray} from './helpers';
 
-// Quiz questions
 const apiUrl = "http://localhost:8000";
 
 class AppState {
-    @observable questions;
+    @observable questions = [];
     @observable currentQuestionIndex;
     @observable difficulty;
     @observable correctAnswerCount = 0;
@@ -14,7 +14,6 @@ class AppState {
     @observable correctNotification = false;
     @observable quizEnded = false;
 
-    constructor() { this.questions = [] }
 
     @action setQuizDifficulty(difficulty) {
         if (difficulty !== this.difficulty) {
@@ -24,17 +23,11 @@ class AppState {
         }
     }
 
-    randomArray(arr) {
-        return arr.sort(() => .5 - Math.random());
-    }
-
-    limitArray(arr, size) {
-        return arr.slice(0, size);
-    }
-
     @action setQuestions() {
+        this.questions = [];
+
         axios.get(`${apiUrl}/questions/${this.difficulty}`)
-            .then(res => this.questions = this.limitArray(this.randomArray(res.data), 10));
+            .then(res => this.questions = limitArray(randomArray(res.data), 10));
     }
 
     @action answerQuestion(answer) {
