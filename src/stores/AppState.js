@@ -2,12 +2,9 @@ import {observable, action} from 'mobx'
 import axios from 'axios'
 
 // Quiz questions
-import beginnerQuestions from '../../api/questions/beginner.json';
+const apiUrl = "http://localhost:8000";
 
 class AppState {
-    /*
-        Quiz Related Code
-    */
     @observable questions;
     @observable currentQuestionIndex;
     @observable difficulty;
@@ -17,46 +14,37 @@ class AppState {
     @observable correctNotification = false;
     @observable quizEnded = false;
 
-    constructor() {
-        this.questions = [];
-        this.apiUrl = `http://app.local/api/leaderboard.php`;
-    }
+    constructor() { this.questions = [] }
 
     @action setQuizDifficulty(difficulty) {
         if (difficulty !== this.difficulty) {
             this.currentQuestionIndex = 0;
             this.difficulty = difficulty;
-            this.setQuestions(); // Set questions to reflect updated difficulty
+            this.setQuestions();
         }
+    }
+
+    randomArray(arr) {
+        return arr.sort(() => .5 - Math.random());
+    }
+
+    limitArray(arr, size) {
+        return arr.slice(0, size);
     }
 
     @action setQuestions() {
-        switch (this.difficulty) {
-            case 'beginner':
-                this.questions = beginnerQuestions;
-                break;
-
-            case 'intermediate':
-                this.questions = beginnerQuestions;
-                break;
-
-            case 'advanced':
-                this.questions = beginnerQuestions;
-                break;
-        }
+        axios.get(`${apiUrl}/questions/${this.difficulty}`)
+            .then(res => this.questions = this.limitArray(this.randomArray(res.data), 10));
     }
 
     @action answerQuestion(answer) {
-        if (answer.hasOwnProperty('answer') && answer.answer === true) {
-            this.correctAnswer();
-        } else {
-            this.incorrectAnswer();
-            return false;
-        }
+        if (answer.isCorrect === true) return this.correctAnswer();
+        this.incorrectAnswer();
+        return false;
     }
 
     correctAnswer() {
-        if ((this.currentQuestionIndex) === this.questions.length - 1) {
+        if (this.currentQuestionIndex === this.questions.length - 1) {
             this.quizEnded = true;
             this.correctAnswerCount += 1;
         } else {
@@ -79,16 +67,8 @@ class AppState {
         }, 1500)
     }
 
-
-    /*
-        Leaderboard Related Code
-    */
-
     async getLeaderboard(difficulty) {
-        if(!difficulty) return;
-        console.log('updating difficulty to', difficulty);
-        let {data} = await axios.get(`${this.apiUrl}?difficulty=${difficulty}`);
-        return data;
+        return '';
     }
 }
 

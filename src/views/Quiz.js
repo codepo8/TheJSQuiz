@@ -20,7 +20,7 @@ export default class Quiz extends Component {
         // If difficulty has not been set redirect to Home
         if (this.store.difficulty === undefined) {
             this.props.history.push('/');
-        };
+        }
 
         this.redirectAfterQuizEnded();
     }
@@ -29,8 +29,8 @@ export default class Quiz extends Component {
         this.redirectAfterQuizEnded();
     }
 
-    answerQuestion(answer, e) {
-        var answer = this.store.answerQuestion(answer);
+    answerQuestion(question, e) {
+        const answer = this.store.answerQuestion(question);
 
         if (answer === false) {
             e.currentTarget.style.backgroundColor = '#ccc';
@@ -55,9 +55,9 @@ export default class Quiz extends Component {
                         <h4>{currentQuestion.title}</h4>
                         {currentQuestion.snippet && <Highlight className='js noselect'>{currentQuestion.snippet}</Highlight>}
                         <ul className="mdl-list">
-                            {currentQuestion.answers.map((answer, key) => <li key={key} className="mdl-list__item">
+                            {currentQuestion.answers.map((question, key) => <li key={key} className="mdl-list__item">
                                 {questionPrefixes[key]}
-                                <span className="answer" onClick={e => this.answerQuestion(answer, e)}>{answer.value}</span>
+                                <span className="answer" onClick={e => this.answerQuestion(question, e)}>{question.answer}</span>
                             </li>)}
                         </ul>
                     </div>
@@ -73,7 +73,8 @@ export default class Quiz extends Component {
             <main className="mdl-layout__content quiz-component">
                 <div className="page-content">
                     <Header/>
-                    <div className="container">
+
+                    {this.store.questions.length > 0 && <div className="container">
                         <div className="row">
                             <h5 className="animate">Question {store.currentQuestionIndex + 1}
                                 /{store.questions.length}</h5>
@@ -86,7 +87,7 @@ export default class Quiz extends Component {
                                 {this.renderQuestions()}
                             </ReactCSSTransitionGroup>
                         </ul>
-                    </div>
+                    </div>}
                 </div>
 
                 {store.correctNotification && <MessageBox title="Correct!" color="green" character="&#x2714;"/>}

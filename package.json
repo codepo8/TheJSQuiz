@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "node devserver.js",
+    "start": "node devserver.js && node api/server.js",
     "build": "rimraf ./dist && webpack --config webpack.config.production.js",
     "preview": "http-server ./dist -p 1234 -c-1",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -39,12 +39,14 @@
   "dependencies": {
     "axios": "^0.15.0",
     "faker": "^3.1.0",
+    "hapi": "^16.1.0",
     "interactjs": "^1.2.8",
     "lazy-route": "^1.0.7",
     "mobx": "^2.5.2",
     "mobx-react": "^3.5.7",
     "mobx-react-devtools": "^4.2.6",
     "moment": "^2.15.1",
+    "mongoose": "^4.9.2",
     "package": "^1.0.1",
     "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.4.2",
