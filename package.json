@@ -57,9 +57,5 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "beta",
     "whatwg-fetch": "^1.0.0"
-  },
-  "repository": {
-    "url": "git@github.com:mhaagens/react-mobx-react-router4-boilerplate.git",
-    "type": "git"
   }
 }
