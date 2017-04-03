@@ -2,4 +2,9 @@
 
 .hljs {
     padding: 1em 1.5em;
+
+    @media (max-width: 767px) {
+        overflow-x: scroll;
+    }
 }
+

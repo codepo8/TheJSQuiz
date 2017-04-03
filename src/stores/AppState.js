@@ -14,23 +14,32 @@ class AppState {
     @observable correctNotification = false;
     @observable quizEnded = false;
 
-
     @action setQuizDifficulty(difficulty) {
         if (difficulty !== this.difficulty) {
             this.currentQuestionIndex = 0;
             this.difficulty = difficulty;
+            this.correctAnswerCount = 0;
+            this.incorrectAnswerCount = 0;
+            this.quizEnded = false;
             this.setQuestions();
         }
     }
 
-    @action setQuestions() {
+    @action resetQuiz() {
+        this.difficulty = "";
+        this.correctAnswerCount = 0;
+        this.incorrectAnswerCount = 0;
+        this.quizEnded = false;
+    }
+
+    setQuestions() {
         this.questions = [];
 
         axios.get(`${apiUrl}/questions/${this.difficulty}`)
-            .then(res => this.questions = limitArray(randomArray(res.data), 10));
+            .then(res => this.questions = limitArray(randomArray(res.data), 1));
     }
 
-    @action answerQuestion(answer) {
+    answerQuestion(answer) {
         if (answer.isCorrect === true) return this.correctAnswer();
         this.incorrectAnswer();
         return false;
@@ -58,10 +67,6 @@ class AppState {
         setTimeout(() => {
             this.incorrectNotification = false;
         }, 1500)
-    }
-
-    async getLeaderboard(difficulty) {
-        return '';
     }
 }
 

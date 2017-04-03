@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
+import { Link } from 'react-router-dom';
 
 // Custom components
 import Header from '../components/Header';
-import Form from '../components/Form';
 
-@inject("store")@observer
+@inject("store") @observer
 export default class Leaderboard extends Component {
     constructor(props) {
         super(props);
         this.store = this.props.store;
+        this.state = { score: (this.store.questions.length * 4) - this.store.incorrectAnswerCount }
     }
 
     componentWillMount() {
@@ -19,13 +20,18 @@ export default class Leaderboard extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.store.resetQuiz();
+    }
+
     render() {
         return (
             <section className="home">
-              <Header/>
+                <Header/>
                 <div className="container">
                     <h1>Results</h1>
-                    <h4>Well done for completing the {this.store.difficulty} JavaScript quiz! Your results are below.</h4>
+                    <h4>Well done for completing the {this.store.difficulty} JavaScript quiz! Your results are
+                        below.</h4>
                     <p>
                         <strong>Correct Answers:</strong> {this.store.correctAnswerCount}
                     </p>
@@ -34,12 +40,11 @@ export default class Leaderboard extends Component {
                         <strong>Incorrect Answers:</strong> {this.store.incorrectAnswerCount}
                     </p>
 
-                    <h5>Your score is: {((this.store.questions.length * 4) - this.store.incorrectAnswerCount)} out of {this.store.questions.length * 4}!</h5>
+                    <h5>Your score is: {this.state.score} out of {this.store.questions.length * 4}!</h5>
 
                     <br/>
 
-                    <h3>Share your results</h3>
-                    <Form />
+                    <Link to="/" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back to Home</Link>
                 </div>
             </section>
         );

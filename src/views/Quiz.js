@@ -58,7 +58,7 @@ export default class Quiz extends Component {
 
                         <ul className="mdl-list">
                             {currentQuestion.answers.map((question, key) => <li key={key} className="mdl-list__item">
-                                {questionPrefixes[key]}
+                                <span className="key">{questionPrefixes[key]}</span>
                                 <span className="answer" onClick={e => this.answerQuestion(question, e)}>{question.answer}</span>
                             </li>)}
                         </ul>
@@ -81,7 +81,7 @@ export default class Quiz extends Component {
                             <h5 className="animate">Question {store.currentQuestionIndex + 1}
                                 /{store.questions.length}</h5>
 
-                            <h5 className="animate">Difficulty: {store.difficulty}</h5>
+                            <h5 className="animate difficulty">Difficulty: {store.difficulty}</h5>
                         </div>
 
                         <ul>

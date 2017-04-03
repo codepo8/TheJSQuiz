@@ -19,9 +19,7 @@ server.route({
     path: '/questions',
     handler: function (request, reply) {
         const data = request.payload;
-
         let valid = helpers.validate.question(data);
-
         if(valid.hasOwnProperty('error')) return reply(valid.error);
 
         let { title, snippet, answers, difficulty } = data;
@@ -45,8 +43,22 @@ server.route({
     }
 });
 
+// Add result to LeaderBoard
+server.route({
+    method: ['POST'],
+    'path': '/leaderboards',
+    handler: function (request, reply) {
+        console.log(request.payload);
+        //const data = JSON.parse(request.payload);
+        // let valid = helpers.validate.addScore(data);
+        // if(valid.hasOwnProperty('error')) return reply(valid.error);
+        // console.log('Save score');
+    }
+});
+
 // Start the server
 server.start(err => {
    if(err) throw err;
    console.log(`Server running at: ${server.info.uri}`);
 });
+
