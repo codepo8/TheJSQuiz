@@ -3,9 +3,12 @@ form {
 
   input {
     outline: 0;
+    padding: 8px;
+    min-width: 300px;
+    margin-bottom: 25px;
 
     &:last-of-type {
-      margin-top: 15px;
+      margin-bottom: 0;
     }
   }
 }

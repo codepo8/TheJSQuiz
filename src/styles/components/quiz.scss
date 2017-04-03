@@ -2,7 +2,10 @@
   .row {
     display: block;
     overflow: hidden;
-    margin-bottom: 40px;
+
+    @media (min-width: 401px) {
+      margin-bottom: 40px;
+    }
 
     h5 {
       text-transform: capitalize;;
@@ -23,18 +26,34 @@
       padding-right: 0;
       letter-spacing: 0px;
 
+      .key {
+        @media (max-width: 767px) {
+          display: none;
+        }
+      }
+
       .answer {
         font-size: 26px;
         width: 100%;
-        margin-left: 20px;
-        padding: 20px;
         border: 1px solid #ccc;
         cursor: pointer;
+        padding: 8px;
+
+        @media (min-width: 768px) {
+          margin-left: 20px;
+          padding: 20px;
+        }
 
         &:hover {
           background: $lightGray;
         }
       }
+    }
+  }
+
+  .difficulty {
+    @media (max-width: 400px) {
+      display: none;
     }
   }
 }
