@@ -2,8 +2,9 @@ module.exports = function (mongoose) {
     const Question = new mongoose.Schema({
         title: String,
         snippet: String,
+        difficulty: String,
         answers: [{
-            answer: String,
+            value: String,
             isCorrect: Boolean
         }]
     });

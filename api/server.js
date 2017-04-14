@@ -3,34 +3,32 @@ const mongoose = require('mongoose');
 const helpers = require('./helpers');
 
 // Mongoose connection
-mongoose.connect('mongodb://root:root@ds147070.mlab.com:47070/jsquiz');
+mongoose.connect('mongodb://localhost:27017/quiz');
 const models = require('./models')(mongoose);
 
 // Create a new server
 const server = new Hapi.Server();
-server.connection({
-    host: 'localhost',
-    port: 8000
-});
+server.connection({ port: 9000 });
 
 // Add Questions
-server.route({
-    method: ['POST'],
-    path: '/questions',
-    handler: function (request, reply) {
-        const data = request.payload;
-        let valid = helpers.validate.question(data);
-        if(valid.hasOwnProperty('error')) return reply(valid.error);
+// Disable for production
+// server.route({
+//     method: ['POST'],
+//     path: '/questions',
+//     handler: function (request, reply) {
+//         const data = request.payload;
+//         let valid = helpers.validate.question(data);
+//         if(valid.hasOwnProperty('error')) return reply(valid.error);
 
-        let { title, snippet, answers, difficulty } = data;
-        const question = new models.Question({ title, snippet, answers, difficulty });
+//         let { title, snippet, answers, difficulty } = data;
+//         const question = new models.Question({ title, snippet, answers, difficulty });
 
-        question.save(function (err) {
-            if(err) reply(`Error inserting user: ${err}.`);
-            reply('Successfully added question');
-        });
-    }
-});
+//         question.save(function (err) {
+//             if(err) reply(`Error inserting user: ${err}.`);
+//             reply('Successfully added question');
+//         });
+//     }
+// });
 
 // Get Questions
 server.route({
@@ -40,19 +38,6 @@ server.route({
         const difficulty = request.params.difficulty ? encodeURIComponent(request.params.difficulty) : '';
         const results = difficulty ? models.Question.find({difficulty}) : models.Question.find();
         return reply(results);
-    }
-});
-
-// Add result to LeaderBoard
-server.route({
-    method: ['POST'],
-    'path': '/leaderboards',
-    handler: function (request, reply) {
-        console.log(request.payload);
-        //const data = JSON.parse(request.payload);
-        // let valid = helpers.validate.addScore(data);
-        // if(valid.hasOwnProperty('error')) return reply(valid.error);
-        // console.log('Save score');
     }
 });
 

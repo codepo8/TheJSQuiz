@@ -2,7 +2,7 @@ import {observable, action} from 'mobx'
 import axios from 'axios'
 import {limitArray, randomArray} from './helpers';
 
-const apiUrl = "http://localhost:8000";
+const apiUrl = "http://thejsquiz.com/api";
 
 class AppState {
     @observable questions = [];
@@ -36,7 +36,7 @@ class AppState {
         this.questions = [];
 
         axios.get(`${apiUrl}/questions/${this.difficulty}`)
-            .then(res => this.questions = limitArray(randomArray(res.data), 1));
+            .then(res => this.questions = limitArray(randomArray(res.data), 15));
     }
 
     answerQuestion(answer) {

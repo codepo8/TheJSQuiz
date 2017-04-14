@@ -59,7 +59,7 @@ export default class Quiz extends Component {
                         <ul className="mdl-list">
                             {currentQuestion.answers.map((question, key) => <li key={key} className="mdl-list__item">
                                 <span className="key">{questionPrefixes[key]}</span>
-                                <span className="answer" onClick={e => this.answerQuestion(question, e)}>{question.answer}</span>
+                                <span className="answer" onClick={e => this.answerQuestion(question, e)}>{question.value}</span>
                             </li>)}
                         </ul>
                     </div>
